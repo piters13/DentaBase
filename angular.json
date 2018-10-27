@@ -7,8 +7,17 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
-      "schematics": {},
+      "prefix": "db",
+      "schematics": {
+        "@schematics/angular:component": {
+          "prefix": "db",
+          "styleext": "scss",
+          "changeDetection": "OnPush"
+        },
+        "@schematics/angular:directive": {
+          "prefix": "db"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -19,10 +28,14 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
+              "src/favicon-16x16.png",
+              "src/favicon-32x32.png",
               "src/assets"
             ],
             "styles": [
+              {
+                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              },
               "src/styles.css"
             ],
             "scripts": []
@@ -50,7 +63,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "DentaBase:build"
+            "browserTarget": "DentaBase:build",
+            "hmrWarning": false,
+            "host": "0.0.0.0"
           },
           "configurations": {
             "production": {
