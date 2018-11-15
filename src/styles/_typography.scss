@@ -1,0 +1,8 @@
+a.no-decoration {
+  color: inherit;
+
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+}

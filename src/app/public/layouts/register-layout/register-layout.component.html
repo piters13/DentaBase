@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col col-lg-5 col-md-7">
+      <h1 class="mat-h1">Zarejestruj się</h1>
+
+      <p *ngIf="registerParams.error">
+        {{registerParams.error}}
+      </p>
+
+      <mat-vertical-stepper linear *ngIf="!registerParams.error">
+        <ng-template matStepperIcon="edit">
+          <mat-icon svgIcon="edit"></mat-icon>
+        </ng-template>
+
+        <mat-step [stepControl]="loginDetailsForm">
+          <ng-template matStepLabel>Dane logowania</ng-template>
+
+          <form [formGroup]="loginDetailsForm" (ngSubmit)="saveLoginDetailsForm()">
+            <p>
+              <mat-form-field>
+                <mat-label>E-mail</mat-label>
+                <input type="email" required matInput placeholder="Wpisz swój adres e-mail" formControlName="email">
+                <mat-error *ngIf="emailFormControl.hasError('emailTaken')">
+                  Ten e-mail jest już zajęty
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                  Wpisz poprawny adres e-mail
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                  E-mail jest <strong>wymagany</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Hasło</mat-label>
+                <input type="password" matInput placeholder="Wpisz swoje hasło" formControlName="password" required
+                       (input)="revalidatePasswordConfirm()">
+                <mat-error *ngIf="passwordFormControl.hasError('required')">
+                  Hasło jest <strong>wymagane</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Powtórz hasło</mat-label>
+                <input type="password" matInput placeholder="Wpisz swoje hasło ponownie"
+                       formControlName="passwordConfirm"
+                       required>
+                <mat-error
+                  *ngIf="passwordConfirmFormControl.hasError('equalTo') && !passwordConfirmFormControl.hasError('required')">
+                  Wprowadzone hasła różnią się
+                </mat-error>
+                <mat-error *ngIf="passwordConfirmFormControl.hasError('required')">
+                  Powtórzenie hasła jest <strong>wymagane</strong>
+                </mat-error>
+              </mat-form-field>
+            </p>
+
+            <p [class.mat-error]="termsAcceptedFormControl.hasError('required') && termsAcceptedFormControl.dirty">
+              <mat-checkbox color="primary" required formControlName="termsAccepted">Przeczytałem i akceptuję Regulamin
+                *
+              </mat-checkbox>
+            </p>
+
+            <p
+              [class.mat-error]="registrationDataProcessingFormControl.hasError('required') && registrationDataProcessingFormControl.dirty">
+              <mat-checkbox color="primary" required formControlName="registrationDataProcessing">
+                Wyrażam zgodę na przetwarzanie moich danych osobowych przez (nazwa) z siedzibą w (miasto) (xx-xxx), przy
+                ulicy (...), w celu (...). Zgoda jest dobrowolna, jednakże niezbędna do rejestracji. Zgoda może zostać
+                cofnięta w dowolnym momencie przez wysłanie wiadomości e-mail na adres naszej firmy. *
+              </mat-checkbox>
+            </p>
+
+            <button mat-raised-button color="primary" class="w-100" matStepperNext>Potwierdź</button>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="userDetailsForm">
+          <ng-template matStepLabel>Dodatkowe informacje</ng-template>
+
+          <form [formGroup]="userDetailsForm" (ngSubmit)="register()">
+            <p>
+              FORMULARZ
+              <!-- <gu-user-details-form-group [form]="userDetailsForm"></gu-user-details-form-group> -->
+            </p>
+
+            <button mat-raised-button color="primary" class="w-100" type="submit" [disabled]="loading">
+              Zarejestruj się
+            </button>
+          </form>
+        </mat-step>
+      </mat-vertical-stepper>
+
+      <mat-divider class="mt-5 mb-2"></mat-divider>
+
+      <a routerLink="/login">Masz już konto? Zaloguj się!</a>
+    </div>
+  </div>
+</div>

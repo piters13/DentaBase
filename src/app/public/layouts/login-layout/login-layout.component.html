@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col col-lg-5 col-md-7">
+      <h1 class="mat-h1">Logowanie</h1>
+
+      <form [formGroup]="formGroup" (ngSubmit)="login()">
+        <p>
+          <mat-form-field class="w-100">
+            <mat-label>E-mail</mat-label>
+            <input type="email" required matInput placeholder="Wpisz swój adres e-mail" formControlName="email">
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              Wpisz poprawny adres e-mail
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              E-mail jest <strong>wymagany</strong>
+            </mat-error>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field class="w-100">
+            <mat-label>Hasło</mat-label>
+            <input type="password" matInput placeholder="Wpisz swoje hasło" formControlName="password" required>
+            <mat-error *ngIf="passwordFormControl.hasError('required')">
+              Hasło jest <strong>wymagane</strong>
+            </mat-error>
+          </mat-form-field>
+        </p>
+
+        <button mat-raised-button color="primary" class="w-100 text-uppercase" [disabled]="loading | async">Zaloguj się</button>
+      </form>
+
+      <mat-divider class="mt-5 mb-2"></mat-divider>
+
+      <div class="mb-1"><a routerLink="/password-reset">Nie pamiętasz hasła?</a></div>
+    </div>
+  </div>
+</div>
