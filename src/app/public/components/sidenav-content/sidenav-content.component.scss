@@ -1,0 +1,24 @@
+@import 'variables';
+
+header {
+  background-color: $primary;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  color: #fff;
+
+  @media (min-width: 600px) {
+    height: 64px;
+  }
+}
+
+db-navigation-item::ng-deep {
+  display: block;
+
+  .mat-button {
+    display: block;
+    text-align: left;
+    width: 100%;
+  }
+}

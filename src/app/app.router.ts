@@ -1,3 +1,5 @@
+import { AuthGuard } from './core/guards/auth.guard';
+import { GuestGuard } from './core/guards/guest.guard';
 // tslint:disable-next-line:max-line-length
 import { PasswordResetConfirmLayoutComponent } from './public/layouts/password-reset-confirm-layout/password-reset-confirm-layout.component';
 import { PasswordResetLayoutComponent } from './public/layouts/password-reset-layout/password-reset-layout.component';
@@ -10,16 +12,16 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginLayoutComponent,
-    // canActivate: [GuestGuard],
+    canActivate: [GuestGuard],
   },
   {
     path: 'register',
     component: RegisterLayoutComponent,
-    // canActivate: [GuestGuard],
+    canActivate: [GuestGuard],
   },
   {
     path: 'password-reset',
-    // canActivate: [GuestGuard],
+    canActivate: [GuestGuard],
     children: [
       {
         path: '',

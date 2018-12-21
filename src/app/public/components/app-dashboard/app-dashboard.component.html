@@ -1,3 +1,17 @@
-<p>
-  app-dashboard works!
-</p>
+<mat-sidenav-container>
+  <mat-sidenav mode="push">
+    <db-sidenav-content [navigationItems]="navigation$ | async"></db-sidenav-content>
+  </mat-sidenav>
+
+  <db-app-bar [navigationItems]="navigation$ | async"></db-app-bar>
+
+  <div class="wrapper">
+    <div class="content">
+      <router-outlet #o="outlet"></router-outlet>
+    </div>
+
+    <footer class="mt-5">
+      <db-footer></db-footer>
+    </footer>
+  </div>
+</mat-sidenav-container>

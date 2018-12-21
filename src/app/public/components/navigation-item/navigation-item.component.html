@@ -1,0 +1,8 @@
+<a mat-button *ngIf="item.path" [routerLink]="item.path">
+  <mat-icon *ngIf="item.icon" [svgIcon]="item.icon"></mat-icon>
+  <span>{{item.label}}</span>
+</a>
+<button mat-button *ngIf="item.callback" (click)="item.callback()">
+  <mat-icon *ngIf="item.icon" [svgIcon]="item.icon"></mat-icon>
+  <span>{{item.label}}</span>
+</button>

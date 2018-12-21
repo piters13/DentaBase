@@ -1,11 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-// import { Select, Store } from '@ngxs/store';
-// import { AuthState } from '@app/core/state/auth/auth.state';
-import { Observable } from 'rxjs';
-// import { Login } from '@app/core/state/auth/auth.actions';
-import { Router } from '@angular/router';
-// import { Navigate } from '@ngxs/router-plugin';
+import { Store } from '@ngxs/store';
+import { BehaviorSubject } from 'rxjs';
+import { Login } from '@app/core/state/auth.actions';
+import { Navigate } from '@ngxs/router-plugin';
+import { noop } from '@app/core/utils';
 
 @Component({
   selector: 'db-login-layout',
@@ -13,11 +12,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginLayoutComponent implements OnInit {
+export class LoginLayoutComponent implements OnInit, OnDestroy {
   formGroup: FormGroup;
 
-  // @Select(AuthState.loading)
-  loading: Observable<boolean>;
+  loading$ = new BehaviorSubject(false);
 
   get emailFormControl(): FormControl {
     return this.formGroup.get('email') as FormControl;
@@ -27,21 +25,31 @@ export class LoginLayoutComponent implements OnInit {
     return this.formGroup.get('password') as FormControl;
   }
 
-  constructor(private formBuilder: FormBuilder,
-            //  private store: Store
-            ) {}
+  constructor(private formBuilder: FormBuilder, private store: Store) {}
 
   ngOnInit() {
     this.formGroup = this.formBuilder.group({
-      email: [null, [Validators.email, Validators.required]],
-      password: [null, Validators.required],
+      email: [undefined, [Validators.email, Validators.required]],
+      password: [undefined, Validators.required],
     });
   }
 
+  ngOnDestroy() {
+    this.loading$.complete();
+  }
+
   login() {
-    // if (this.formGroup.valid) {
-    //   this.store.dispatch(new Login(this.formGroup.value));
-    // }
+    if (this.formGroup.valid) {
+      this.loading$.next(true);
+      this.store.dispatch(new Login(this.formGroup.value)).subscribe(
+        noop,
+        () => {
+          this.loading$.next(false);
+        },
+        () => {
+          this.store.dispatch(new Navigate(['/']));
+        },
+      );
+    }
   }
 }
-

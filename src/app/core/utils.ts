@@ -1,6 +1,9 @@
-import { environment } from './../../environments/environment';
 import { FormGroup } from '@angular/forms';
+import { environment } from '@env/environment';
 import { HttpHeaders } from '@angular/common/http';
+// noinspection TypeScriptCheckImport
+import * as sha1 from 'sha1';
+import { prop, values } from 'ramda';
 
 export function markAsTouchedDeep(formGroup: FormGroup): void {
   formGroup.markAsTouched();
@@ -47,3 +50,18 @@ export function randomId(): number {
 }
 
 export const noop = () => null;
+
+export const hash = (v: string): string => sha1(v) as string;
+
+export const trackById = prop('id');
+
+export function updateValueAndValidityDeep(formGroup: FormGroup): void {
+  formGroup.updateValueAndValidity({ onlySelf: true });
+  values(formGroup.controls).forEach(control => {
+    if ('controls' in control) {
+      updateValueAndValidityDeep(control as FormGroup);
+    } else {
+      control.updateValueAndValidity({ onlySelf: true });
+    }
+  });
+}

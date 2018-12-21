@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-// import { UserService } from '@app/core/services/user.service';
-import { makeEqualToValidator } from 'src/app/core/validators';
+import { makeEqualToValidator } from '@app/core/validators';
+import { UserService } from '@app/core/services/user.service';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -26,7 +26,7 @@ export class PasswordResetConfirmLayoutComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private changeDetectorRef: ChangeDetectorRef,
-    // private userService: UserService,
+    private userService: UserService,
     private snackBar: MatSnackBar,
     private route: ActivatedRoute,
     private router: Router,
@@ -34,9 +34,9 @@ export class PasswordResetConfirmLayoutComponent implements OnInit {
 
   ngOnInit() {
     this.formGroup = this.formBuilder.group({
-      token: [null, Validators.required],
-      newPassword: [null, Validators.required],
-      newPasswordConfirm: [null, [Validators.required, makeEqualToValidator('newPassword')]],
+      token: [undefined, Validators.required],
+      newPassword: [undefined, Validators.required],
+      newPasswordConfirm: [undefined, [Validators.required, makeEqualToValidator('newPassword')]],
     });
 
     this.formGroup.patchValue(this.route.snapshot.params);
@@ -52,29 +52,29 @@ export class PasswordResetConfirmLayoutComponent implements OnInit {
       this.loading = true;
       this.changeDetectorRef.markForCheck();
 
-      // this.userService
-      //   .confirmResetPassword$({
-      //     token: this.formGroup.value.token,
-      //     newPassword: this.formGroup.value.newPassword,
-      //   })
-      //   .subscribe(
-      //     () => {
-      //       this.snackBar.open(
-      //         'Hasło do Twojego konta zostało zmienione. Możesz się teraz zalogować.',
-      //         null,
-      //         {
-      //           duration: 7000,
-      //           verticalPosition: 'top',
-      //         },
-      //       );
+      this.userService
+        .confirmResetPassword$({
+          token: this.formGroup.value.token,
+          newPassword: this.formGroup.value.newPassword,
+        })
+        .subscribe(
+          () => {
+            this.snackBar.open(
+              'Hasło do Twojego konta zostało zmienione. Możesz się teraz zalogować.',
+              null,
+              {
+                duration: 7000,
+                verticalPosition: 'top',
+              },
+            );
 
-      //       this.router.navigateByUrl('/login');
-      //     },
-      //     () => {
-      //       this.loading = false;
-      //       this.changeDetectorRef.markForCheck();
-      //     },
-      //   );
+            this.router.navigateByUrl('/login');
+          },
+          () => {
+            this.loading = false;
+            this.changeDetectorRef.markForCheck();
+          },
+        );
     }
   }
 }

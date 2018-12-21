@@ -1,18 +1,18 @@
+import { AuthState } from './state/auth.state';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // import { ErrorInterceptor } from '@app/core/interceptors/error.interceptor';
 // import { LanguageInterceptor } from '@app/core/interceptors/language.interceptor';
 // import { AuthTokenInterceptor } from '@app/core/interceptors/auth-token.interceptor';
-// import { NgxsModule } from '@ngxs/store';
+import { NgxsModule } from '@ngxs/store';
 // import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 // import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
-// import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
-// import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
-// import { AuthState } from '@app/core/state/auth/auth.state';
+import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 // import { environment } from '@env/environment.test';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
-// import { deserialize } from '@app/core/ngxs-storage-sync';
+import { deserialize } from '@app/core/ngxs-storage-sync';
 // import { RefreshTokenInterceptor } from '@app/core/interceptors/refresh-token.interceptor';
 
 const snackBarOptions = {
@@ -25,14 +25,14 @@ const snackBarOptions = {
     CommonModule,
     HttpClientModule,
     MatSnackBarModule,
-    // NgxsModule.forRoot([AuthState]),
-    // NgxsStoragePluginModule.forRoot({
-    //   key: ['auth.userContext', 'auth.credentials'],
-    //   deserialize,
-    // }),
+    NgxsModule.forRoot([AuthState]),
+    NgxsStoragePluginModule.forRoot({
+      key: ['auth.userContext', 'auth.credentials'],
+      deserialize,
+    }),
     // NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
     // NgxsReduxDevtoolsPluginModule.forRoot({ disabled: environment.production }),
-    // NgxsRouterPluginModule.forRoot(),
+    NgxsRouterPluginModule.forRoot(),
   ],
   declarations: [],
   providers: [

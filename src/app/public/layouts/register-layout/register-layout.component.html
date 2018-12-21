@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col col-lg-5 col-md-7">
+    <div class="col col-lg-6 col-md-8">
       <h1 class="mat-h1">Zarejestruj się</h1>
 
-      <p *ngIf="registerParams.error">
-        {{registerParams.error}}
+      <p *ngIf="registerParams?.isLeft()">
+        {{registerParams.value}}
       </p>
 
-      <mat-vertical-stepper linear *ngIf="!registerParams.error">
+      <mat-vertical-stepper linear *ngIf="registerParams?.isRight()">
         <ng-template matStepperIcon="edit">
           <mat-icon svgIcon="edit"></mat-icon>
         </ng-template>
@@ -17,7 +17,7 @@
 
           <form [formGroup]="loginDetailsForm" (ngSubmit)="saveLoginDetailsForm()">
             <p>
-              <mat-form-field>
+              <mat-form-field class="w-100">
                 <mat-label>E-mail</mat-label>
                 <input type="email" required matInput placeholder="Wpisz swój adres e-mail" formControlName="email">
                 <mat-error *ngIf="emailFormControl.hasError('emailTaken')">
@@ -31,7 +31,7 @@
                 </mat-error>
               </mat-form-field>
 
-              <mat-form-field>
+              <mat-form-field class="w-100">
                 <mat-label>Hasło</mat-label>
                 <input type="password" matInput placeholder="Wpisz swoje hasło" formControlName="password" required
                        (input)="revalidatePasswordConfirm()">
@@ -40,7 +40,7 @@
                 </mat-error>
               </mat-form-field>
 
-              <mat-form-field>
+              <mat-form-field class="w-100">
                 <mat-label>Powtórz hasło</mat-label>
                 <input type="password" matInput placeholder="Wpisz swoje hasło ponownie"
                        formControlName="passwordConfirm"
@@ -78,8 +78,7 @@
 
           <form [formGroup]="userDetailsForm" (ngSubmit)="register()">
             <p>
-              FORMULARZ
-              <!-- <gu-user-details-form-group [form]="userDetailsForm"></gu-user-details-form-group> -->
+              <db-user-details-form-group [form]="userDetailsForm"></db-user-details-form-group>
             </p>
 
             <button mat-raised-button color="primary" class="w-100" type="submit" [disabled]="loading">

@@ -1,0 +1,9 @@
+<div class="container">
+    <db-page-title-c title="Nadchodzące wizyty">
+      <button mat-button color="primary" routerLink="/appointments-history">
+        Historia wizyt
+      </button>
+    </db-page-title-c>
+
+    <db-appointments-list [appointmentsGetFn]="appointmentsGetFn"></db-appointments-list>
+  </div>

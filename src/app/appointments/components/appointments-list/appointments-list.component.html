@@ -1,0 +1,28 @@
+<db-h2-d-c>
+    <div class="d-inline-flex align-items-center">
+      <db-loader *ngIf="loading$ | async" class="mr-3"></db-loader>
+
+      <button mat-icon-button color="primary" [disabled]="(isFirstPage$ | async) || (loading$ | async)" (click)="previousPage()">
+        <mat-icon svgIcon="arrow_left"></mat-icon>
+      </button>
+
+      <span>{{currentPage$ | async}}</span>
+
+      <button mat-icon-button color="primary" [disabled]="(isLastPage$ | async) || (loading$ | async)" (click)="nextPage()">
+        <mat-icon svgIcon="arrow_right"></mat-icon>
+      </button>
+    </div>
+  </db-h2-d-c>
+
+  <ng-container *ngIf="!(loading$ | async)">
+    <p class="readable-text" *ngIf="!appointments || appointments.length === 0; else appointmentsList">
+      Brak wizyt do wyświetlenia.
+    </p>
+  </ng-container>
+
+  <ng-template #appointmentsList>
+    <mat-list>
+      <db-appointments-list-item class="my-3" *ngFor="let appointment of appointments; trackBy: trackById"
+                                 [appointment]="appointment"></db-appointments-list-item>
+    </mat-list>
+  </ng-template>

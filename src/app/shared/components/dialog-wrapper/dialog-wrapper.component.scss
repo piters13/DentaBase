@@ -1,0 +1,21 @@
+@import 'variables';
+
+:host {
+  width: 360px;
+  max-width: 100%;
+  display: block;
+}
+
+:host.lg {
+  @include media-breakpoint-up(md) {
+    width: 690px;
+  }
+}
+
+.mat-dialog-actions {
+  justify-content: flex-end;
+
+  button {
+    text-transform: uppercase;
+  }
+}

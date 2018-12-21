@@ -1,0 +1,10 @@
+<header>
+  <a routerLink="/settings" class="no-decoration">  </a>
+</header>
+
+<mat-nav-list class="mt-3">
+  <ng-container *ngFor="let item of navigationItems; let first = first">
+    <mat-divider *ngIf="!first"></mat-divider>
+    <db-navigation-item [item]="item"></db-navigation-item>
+  </ng-container>
+</mat-nav-list>

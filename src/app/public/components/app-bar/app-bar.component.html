@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+
+      <div class="col-8 col-md-6 d-none d-md-block">
+        <ng-container *ngFor="let item of navigationItems">
+          <db-navigation-item [item]="item"></db-navigation-item>
+        </ng-container>
+      </div>
+
+      <div class="col d-flex align-items-center justify-content-end">
+
+
+        <button mat-icon-button class="d-md-none ml-3" (click)="sidenav.open()">
+          MENU
+          <!-- <mat-icon svgIcon="menu"></mat-icon> -->
+        </button>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>

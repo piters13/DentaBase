@@ -1,0 +1,17 @@
+<div [formGroup]="form">
+  <mat-form-field class="w-100">
+    <mat-label>Imię</mat-label>
+    <input type="text" required matInput placeholder="Wpisz swoje imię" formControlName="firstName">
+    <mat-error *ngIf="firstNameFormControl.hasError('required')">
+      Imię jest <strong>wymagane</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100">
+    <mat-label>Nazwisko</mat-label>
+    <input type="text" required matInput placeholder="Wpisz swoje nazwisko" formControlName="lastName">
+    <mat-error *ngIf="lastNameFormControl.hasError('required')">
+      Nazwisko jest <strong>wymagane</strong>
+    </mat-error>
+  </mat-form-field>
+</div>

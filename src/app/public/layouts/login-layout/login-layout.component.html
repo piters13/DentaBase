@@ -27,7 +27,7 @@
           </mat-form-field>
         </p>
 
-        <button mat-raised-button color="primary" class="w-100 text-uppercase" [disabled]="loading | async">Zaloguj się</button>
+        <button mat-raised-button color="primary" class="w-100" [disabled]="loading$ | async">Zaloguj się</button>
       </form>
 
       <mat-divider class="mt-5 mb-2"></mat-divider>

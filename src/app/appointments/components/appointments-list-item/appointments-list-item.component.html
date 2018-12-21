@@ -1,0 +1,8 @@
+<mat-list-item class="mat-list-item-lg">
+    <div mat-line class="d-flex">
+      <div class="mr-4 d-flex justify-content-between flex-column">
+        <h3 class="list-item-header mb-0">{{appointment.timestamp | date: 'short'}}</h3>
+        <span>{{appointment.patient.lastname}}</span>
+      </div>
+    </div>
+  </mat-list-item>

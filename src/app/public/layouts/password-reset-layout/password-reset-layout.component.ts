@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-// import { UserService } from '@app/core/services/user.service';
+import { UserService } from '@app/core/services/user.service';
 
 @Component({
   selector: 'db-password-reset-layout',
@@ -19,13 +19,13 @@ export class PasswordResetLayoutComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    // private userService: UserService,
+    private userService: UserService,
     private changeDetectorRef: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
     this.formGroup = this.formBuilder.group({
-      email: [null, [Validators.email, Validators.required]],
+      email: [undefined, [Validators.email, Validators.required]],
     });
   }
 
@@ -34,16 +34,16 @@ export class PasswordResetLayoutComponent implements OnInit {
       this.loading = true;
       this.changeDetectorRef.markForCheck();
 
-      // this.userService.requestResetPassword$(this.formGroup.value).subscribe(
-      //   () => {
-      //     this.success = true;
-      //     this.changeDetectorRef.markForCheck();
-      //   },
-      //   () => {
-      //     this.loading = false;
-      //     this.changeDetectorRef.markForCheck();
-      //   },
-      // );
+      this.userService.requestResetPassword$(this.formGroup.value).subscribe(
+        () => {
+          this.success = true;
+          this.changeDetectorRef.markForCheck();
+        },
+        () => {
+          this.loading = false;
+          this.changeDetectorRef.markForCheck();
+        },
+      );
     }
   }
 }
