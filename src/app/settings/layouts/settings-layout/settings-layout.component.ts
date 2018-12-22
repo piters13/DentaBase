@@ -1,3 +1,7 @@
+import { AuthState } from './../../../core/state/auth.state';
+import { Logout } from './../../../core/state/auth.actions';
+import { Observable } from 'rxjs';
+import { Select, Store } from '@ngxs/store';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
@@ -6,11 +10,14 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./settings-layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SettingsLayoutComponent implements OnInit {
+export class SettingsLayoutComponent {
 
-  constructor() { }
+  @Select(AuthState.userFullName)
+  userName$: Observable<string>;
 
-  ngOnInit() {
+  constructor(private store: Store) {}
+
+  logout() {
+    this.store.dispatch(new Logout());
   }
-
 }
