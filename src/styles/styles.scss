@@ -21,6 +21,8 @@ code {
 @import '~bootstrap/scss/bootstrap-grid';
 @import '~bootstrap/scss/utilities';
 
+@import "../../node_modules/angular-calendar/css/angular-calendar.css";
+
 @include mat-core();
 
 @include angular-material-theme($app-theme);

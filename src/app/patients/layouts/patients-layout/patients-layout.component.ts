@@ -1,3 +1,5 @@
+import { PatientsService } from './../../../core/services/patients.service';
+import { Patient } from './../../../core/models/patient';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
@@ -8,9 +10,15 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class PatientsLayoutComponent implements OnInit {
 
-  constructor() { }
+  patients: Patient[];
+
+  constructor(private patientsService: PatientsService) { }
 
   ngOnInit() {
+    this.patientsService.getPatients().subscribe(patients => {
+      this.patients = patients;
+      this.patientsService.patientsData = patients;
+    });
   }
 
 }

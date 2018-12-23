@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { PatientsLayoutComponent } from './layouts/patients-layout/patients-layout.component';
 import { SharedModule } from '@app/shared/shared.module';
 import { PatientsRouter } from './patients.router';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { PatientsRouter } from './patients.router';
     PatientsRouter
   ],
   exports: [PatientsLayoutComponent],
-  declarations: [PatientsLayoutComponent]
+  declarations: [PatientsLayoutComponent, SearchBarComponent]
 })
 export class PatientsModule { }
