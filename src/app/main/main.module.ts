@@ -1,3 +1,4 @@
+import { ScheduleModule } from './../schedule/schedule.module';
 import { PrescriptionModule } from './../prescription/prescription.module';
 import { PatientsModule } from './../patients/patients.module';
 import { NgModule } from '@angular/core';
@@ -13,6 +14,7 @@ import { SettingsModule } from '@app/settings/settings.module';
     PrescriptionModule,
     AppointmentsModule,
     SettingsModule,
+    ScheduleModule
   ],
 })
 export class MainModule {}

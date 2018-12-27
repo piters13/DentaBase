@@ -1,0 +1,29 @@
+@import 'variables';
+
+.mat-button-toggle {
+  color: #000000;
+  font-size: 0.875rem;
+  width: inherit;
+}
+
+.time {
+  .mat-button-toggle-checked {
+    background-color: $primary;
+    color: #ffffff;
+
+    ::ng-deep .mat-button-toggle-focus-overlay {
+      border-bottom: unset;
+    }
+  }
+}
+
+.layout {
+  .mat-button-toggle-checked {
+    background-color: $primary;
+    color: #ffffff;
+
+    ::ng-deep .mat-button-toggle-focus-overlay {
+      border-bottom: unset;
+    }
+  }
+}

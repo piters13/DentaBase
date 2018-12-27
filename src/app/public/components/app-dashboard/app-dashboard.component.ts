@@ -26,7 +26,7 @@ export class AppDashboardComponent implements AfterViewInit {
     const adminNavigation: NavigationItem[] = [
       {
         label: 'Strona główna',
-        path: '/',
+        path: '/schedule',
       },
       {
         label: 'Wizyty',
@@ -39,6 +39,10 @@ export class AppDashboardComponent implements AfterViewInit {
       {
         label: 'Recepta do druku',
         path: '/prescription',
+      },
+      {
+        label: 'Ustawienia',
+        path: '/settings'
       },
     ];
 

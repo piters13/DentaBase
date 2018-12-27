@@ -2,10 +2,10 @@
 import { PasswordResetConfirmLayoutComponent } from './public/layouts/password-reset-confirm-layout/password-reset-confirm-layout.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { LoginLayoutComponent } from './public/layouts/login-layout/login-layout.component';
 import { PasswordResetLayoutComponent } from './public/layouts/password-reset-layout/password-reset-layout.component';
 import { RegisterLayoutComponent } from './public/layouts/register-layout/register-layout.component';
@@ -18,6 +18,12 @@ import { AppBarComponent } from './public/components/app-bar/app-bar.component';
 import { FooterComponent } from './public/components/footer/footer.component';
 import { SidenavContentComponent } from './public/components/sidenav-content/sidenav-content.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import localePl from '@angular/common/locales/pl';
+import localePlExtra from '@angular/common/locales/extra/pl';
+
+registerLocaleData(localePl, 'pl', localePlExtra);
 
 @NgModule({
   imports: [
@@ -27,7 +33,11 @@ import { LayoutModule } from '@angular/cdk/layout';
     CoreModule,
     SharedModule,
     AppRouter,
-    LayoutModule
+    LayoutModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   declarations: [
     AppBarComponent,
@@ -42,7 +52,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     PasswordResetLayoutComponent,
     PasswordResetConfirmLayoutComponent
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'pl' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

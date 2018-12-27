@@ -533,6 +533,12 @@ angular-resizable-element@^3.2.2:
   dependencies:
     tslib "^1.9.0"
 
+angularx-flatpickr@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/angularx-flatpickr/-/angularx-flatpickr-6.1.0.tgz#e1edad5a360b4c2b56c92cee5334c6319b968def"
+  dependencies:
+    tslib "^1.9.0"
+
 ansi-colors@^3.0.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-3.2.1.tgz#9638047e4213f3428a11944a7d4b31cba0a3ff95"
@@ -2453,6 +2459,10 @@ find-up@^3.0.0:
   dependencies:
     locate-path "^3.0.0"
 
+flatpickr@^4.5.2:
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.5.2.tgz#47c8ad472a096e5fb7e74b809b0703535383f20d"
+
 flush-write-stream@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/flush-write-stream/-/flush-write-stream-1.0.3.tgz#c5d586ef38af6097650b49bc41b55fabb19f35bd"
@@ -4146,6 +4156,10 @@ negotiator@0.6.1:
 neo-async@^2.5.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
+
+ng-pick-datetime@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/ng-pick-datetime/-/ng-pick-datetime-7.0.0.tgz#c78d1cfaee183691a4a44cd4f39c98f9c1d1595f"
 
 nice-try@^1.0.4:
   version "1.0.5"

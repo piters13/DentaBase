@@ -22,6 +22,7 @@ code {
 @import '~bootstrap/scss/utilities';
 
 @import "../../node_modules/angular-calendar/css/angular-calendar.css";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
 
 @include mat-core();
 
