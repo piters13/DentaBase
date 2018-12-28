@@ -28,7 +28,10 @@ import {
   MatInputModule,
   MatStepperModule,
   MatChipsModule,
-  MatAutocompleteModule} from '@angular/material';
+  MatAutocompleteModule,
+  MatExpansionModule,
+  MatCardModule,
+} from '@angular/material';
 
 const materialModules = [
   ReactiveFormsModule,
@@ -47,7 +50,9 @@ const materialModules = [
   MatInputModule,
   MatStepperModule,
   MatChipsModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatExpansionModule,
+  MatCardModule,
 ];
 
 const publicDeclarations = [

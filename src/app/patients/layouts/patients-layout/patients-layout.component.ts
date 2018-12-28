@@ -1,6 +1,7 @@
+import { Observable } from 'rxjs';
 import { PatientsService } from './../../../core/services/patients.service';
 import { Patient } from './../../../core/models/patient';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'db-patients-layout',
@@ -10,15 +11,16 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class PatientsLayoutComponent implements OnInit {
 
-  patients: Patient[];
+  private patients: Observable<Patient[]>;
 
-  constructor(private patientsService: PatientsService) { }
+  constructor(private patientsService: PatientsService) {}
 
   ngOnInit() {
-    this.patientsService.getPatients().subscribe(patients => {
-      this.patients = patients;
+    this.patients = this.patientsService.getPatients();
+
+    this.patientsService.getPatients().subscribe((patients => {
       this.patientsService.patientsData = patients;
-    });
+    }));
   }
 
 }

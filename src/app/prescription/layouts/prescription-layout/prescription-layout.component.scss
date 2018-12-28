@@ -1,0 +1,19 @@
+@import 'variables';
+
+.container {
+  padding-top: 2rem;
+
+  @include media-breakpoint-up(md) {
+    padding-top: 4rem;
+  }
+}
+
+mat-form-field {
+  width: 80%;
+}
+
+button {
+  background-color: $primary;
+  color: white;
+  margin-left: 15px;
+}
