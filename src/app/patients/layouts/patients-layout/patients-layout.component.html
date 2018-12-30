@@ -1,17 +1,8 @@
 <div class="container">
-  <db-search-bar (onSelectedOption)="selectedOption($event)"></db-search-bar>
+  <db-search-bar></db-search-bar>
   <h2 style="text-align:center">Lista twoich pacjentów</h2>
   <mat-list>
-    <mat-list-item *ngFor="let patient of patients | async" class="mat-list-item-lg">
-      <div mat-line class="d-flex">
-        <div mat-list-avatar class="d-flex align-items-center justify-content-center">
-          <img src="../../../../assets/google_avatar_64.png">
-        </div>
-        <div class="ml-4 d-flex justify-content-center flex-column">
-          <span> {{patient.firstname}} {{patient.lastname}} </span>
-          <span class="text-muted"> 96032301989 </span>
-        </div>
-      </div>
-    </mat-list-item>
+    <db-patients-list-item class="my-2" *ngFor="let patient of patients | async" [patient]="patient">
+    </db-patients-list-item>
   </mat-list>
 </div>

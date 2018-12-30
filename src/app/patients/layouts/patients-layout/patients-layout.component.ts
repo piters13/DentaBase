@@ -17,10 +17,6 @@ export class PatientsLayoutComponent implements OnInit {
 
   ngOnInit() {
     this.patients = this.patientsService.getPatients();
-
-    this.patientsService.getPatients().subscribe((patients => {
-      this.patientsService.patientsData = patients;
-    }));
   }
 
 }

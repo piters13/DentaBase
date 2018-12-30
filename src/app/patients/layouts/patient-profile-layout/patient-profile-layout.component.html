@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8">
+          <h3 class="card-title">Dane pacjenta</h3>
+          <div class="row" [formGroup]="form">
+            <div class="col-6">
+              <mat-form-field>
+                <input matInput placeholder="Imię" type="text">
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field>
+                <input matInput placeholder="Nazwisko" type="text">
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field>
+                <input matInput placeholder="Adres" type="text">
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field>
+                <input matInput placeholder="Kod pocztowy" type="text">
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field>
+                <input matInput placeholder="Miasto" type="text">
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field>
+                <input matInput placeholder="Państwo" type="text">
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field>
+                <input matInput placeholder="Numer telefonu" type="tel">
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field>
+                <textarea matInput placeholder="Dodatkowe informacje"></textarea>
+              </mat-form-field>
+            </div>
+            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <mat-card class="d-flex justify-content-center flex-column align-items-center">
+            <mat-card-header>
+              <mat-card-title>Karta pacjenta</mat-card-title>
+            </mat-card-header>
+            <img class="pb-3" src="../../../../assets/google_avatar_128.png">
+            <mat-card-content>
+              <div>
+                <p>Data urodzenia: 23/03/1996</p>
+                <p>PESEL: 96032309184</p>
+                <p>Data pierwszej wizyty: 12/04/2005</p>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+
+      <div class="row pt-5">
+        <div class="col-12">
+          <h3>Historia leczenia</h3>
+          <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  24/10/2011
+                </mat-panel-title>
+                <mat-panel-description>
+                  Leczenie kanałowe jedynki górnej
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <img src="../../../../assets/kanałowe.jpg">
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+    </div>
+  </div>

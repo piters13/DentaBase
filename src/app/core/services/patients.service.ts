@@ -7,8 +7,6 @@ import { Patient } from '../models/patient';
   providedIn: 'root'
 })
 export class PatientsService {
-  searchOption = [];
-  public patientsData: Patient[];
   patientUrl = 'http://localhost:3003/patients';
 
   constructor(private http: HttpClient) { }
