@@ -36,10 +36,10 @@ export class AppDashboardComponent implements AfterViewInit {
         label: 'Pacjenci',
         path: '/patients',
       },
-      {
-        label: 'Recepta do druku',
-        path: '/prescription',
-      },
+      // {
+      //   label: 'Recepta do druku',
+      //   path: '/prescription',
+      // },
       {
         label: 'Ustawienia',
         path: '/settings'

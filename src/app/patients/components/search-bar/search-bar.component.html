@@ -3,9 +3,9 @@
     <input type="text" placeholder="Wpisz nazwisko pacjenta"
            matInput [matAutocomplete]="auto" formControlName="patientInput">
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option" [routerLink]="['/patients/', option.id]">
         <span>{{option.lastname}}</span>
-        <small> | ID: {{option.id}}</small>
+        <small class="text-muted"> | PESEL: {{option.pesel}}</small>
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>

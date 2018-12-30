@@ -1,5 +1,10 @@
+import { ActivatedRoute } from '@angular/router';
+import { PatientsService } from '@app/core/services/patients.service';
+import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Patient } from '@app/core/models/patient';
+import { switchMap, shareReplay, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'db-patient-profile-layout',
@@ -8,16 +13,20 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PatientProfileLayoutComponent implements OnInit {
-
-  readonly form: FormGroup;
   panelOpenState = false;
+  patient$: Observable<Patient>;
 
-  constructor(private formBuilder: FormBuilder) {
-    this.form = this.formBuilder.group({
-
-    });
-  }
+  constructor(private patientsService: PatientsService,
+              private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
+    const patientId$ = this.activatedRoute.params;
+
+    this.patient$ = patientId$.pipe(
+      switchMap(({id}) => {
+        return this.patientsService.getPatient(id);
+      }),
+      shareReplay()
+    );
   }
 }

@@ -1,8 +1,10 @@
 <div class="container">
-  <db-search-bar></db-search-bar>
-  <h2 style="text-align:center">Lista twoich pacjentów</h2>
-  <mat-list>
-    <db-patients-list-item class="my-2" *ngFor="let patient of patients | async" [patient]="patient">
-    </db-patients-list-item>
-  </mat-list>
+  <db-page-title>Lista twoich pacjentów</db-page-title>
+  <div class="mx-auto w-75">
+    <db-search-bar></db-search-bar>
+    <mat-list>
+      <db-patients-list-item class="my-2" *ngFor="let patient of patients | async" [patient]="patient">
+      </db-patients-list-item>
+    </mat-list>
+  </div>
 </div>

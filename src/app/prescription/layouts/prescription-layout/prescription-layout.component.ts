@@ -9,13 +9,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class PrescriptionLayoutComponent implements OnInit {
 
-  readonly form: FormGroup;
-  panelOpenState = false;
+  constructor() {
 
-  constructor(private formBuilder: FormBuilder) {
-    this.form = this.formBuilder.group({
-
-    });
   }
 
   ngOnInit() {

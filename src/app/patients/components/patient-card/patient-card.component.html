@@ -1,0 +1,13 @@
+<mat-card *ngIf="patient" class="d-flex justify-content-center flex-column align-items-center">
+  <mat-card-header>
+    <mat-card-title>Karta pacjenta</mat-card-title>
+  </mat-card-header>
+  <img class="pb-3" src="../../../../assets/google_avatar_128.png">
+  <mat-card-content>
+    <div>
+      <p>Data urodzenia: {{patient.birthDate}}</p>
+      <p>PESEL: {{patient.pesel}}</p>
+      <p>Data pierwszej wizyty: {{patient.registrationDate}}</p>
+    </div>
+  </mat-card-content>
+</mat-card>

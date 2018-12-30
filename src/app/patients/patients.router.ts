@@ -11,10 +11,10 @@ const routes: Routes = [
     component: PatientsLayoutComponent,
     // resolve: { state: PatientsStateResolver },
   },
-  // {
-  //   path: ':id',
-  //   component: PatientProfileLayoutComponent,
-  // }
+  {
+    path: 'patients/:id',
+    component: PatientProfileLayoutComponent,
+  }
 ];
 
 @NgModule({

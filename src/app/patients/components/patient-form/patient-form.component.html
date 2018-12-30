@@ -1,0 +1,43 @@
+<div class="row" [formGroup]="form">
+  <div class="col-6">
+    <mat-form-field>
+      <input matInput placeholder="Imię" type="text" formControlName="firstname">
+    </mat-form-field>
+  </div>
+  <div class="col-6">
+    <mat-form-field>
+      <input matInput placeholder="Nazwisko" type="text" formControlName="lastname">
+    </mat-form-field>
+  </div>
+  <div class="col-6">
+    <mat-form-field>
+      <input matInput placeholder="Adres" type="text" formControlName="address">
+    </mat-form-field>
+  </div>
+  <div class="col-6">
+    <mat-form-field>
+      <input matInput placeholder="Kod pocztowy" type="text" formControlName="code">
+    </mat-form-field>
+  </div>
+  <div class="col-6">
+    <mat-form-field>
+      <input matInput placeholder="Miasto" type="text" formControlName="city">
+    </mat-form-field>
+  </div>
+  <div class="col-6">
+    <mat-form-field>
+      <input matInput placeholder="Państwo" type="text" formControlName="country">
+    </mat-form-field>
+  </div>
+  <div class="col-6">
+    <mat-form-field>
+      <input matInput placeholder="Numer telefonu" type="text" formControlName="phone">
+    </mat-form-field>
+  </div>
+  <div class="col-6">
+    <mat-form-field>
+      <textarea matInput placeholder="Dodatkowe informacje" formControlName="info"></textarea>
+    </mat-form-field>
+  </div>
+  <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile</button>
+</div>

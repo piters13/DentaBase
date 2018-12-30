@@ -9,6 +9,8 @@ import { PatientsRouter } from './patients.router';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { PatientProfileLayoutComponent } from './layouts/patient-profile-layout/patient-profile-layout.component';
 import { PatientsListItemComponent } from './components/patients-list-item/patients-list-item.component';
+import { PatientFormComponent } from './components/patient-form/patient-form.component';
+import { PatientCardComponent } from './components/patient-card/patient-card.component';
 
 @NgModule({
   imports: [
@@ -18,7 +20,13 @@ import { PatientsListItemComponent } from './components/patients-list-item/patie
     NgxsModule.forFeature([PatientsState]),
     PatientsRouter
   ],
-  exports: [PatientsLayoutComponent],
-  declarations: [PatientsLayoutComponent, SearchBarComponent, PatientProfileLayoutComponent, PatientsListItemComponent]
+  exports: [PatientsLayoutComponent, PatientProfileLayoutComponent],
+  declarations: [
+    PatientsLayoutComponent,
+    SearchBarComponent,
+    PatientProfileLayoutComponent,
+    PatientsListItemComponent,
+    PatientFormComponent,
+    PatientCardComponent]
 })
 export class PatientsModule { }
