@@ -1,18 +1,18 @@
 <div class="row text-center align-items-center">
   <div class="col-md-4">
-    <mat-button-toggle-group [value]="viewDate" class="time">
-      <mat-button-toggle color="primary"
+    <mat-button-toggle-group [value]="viewDateChange.next(viewDate)" #group="matButtonToggleGroup" class="time">
+      <mat-button-toggle color="primary" [value]="viewDate"
            mwlCalendarPreviousView
            [view]="view"
            [(viewDate)]="viewDate"
            (viewDateChange)="viewDateChange.next(viewDate)"> Poprzedni
       </mat-button-toggle>
-      <mat-button-toggle color="primary"
+      <mat-button-toggle color="primary" [value]="viewDate"
            mwlCalendarToday
            [(viewDate)]="viewDate"
            (viewDateChange)="viewDateChange.next(viewDate)"> Obecny
       </mat-button-toggle>
-      <mat-button-toggle color="primary"
+      <mat-button-toggle color="primary" [value]="viewDate"
            mwlCalendarNextView
            [view]="view"
            [(viewDate)]="viewDate"
@@ -24,16 +24,16 @@
     <h3>{{ viewDate | calendarDate: view + 'ViewTitle':locale | uppercase }}</h3>
   </div>
   <div class="col-md-4">
-    <mat-button-toggle-group [value]="view" class="layout">
-      <mat-button-toggle color="primary"
+    <mat-button-toggle-group [(value)]="month" #group="matButtonToggleGroup" class="layout">
+      <mat-button-toggle color="primary" [value]="month"
            (click)="viewChange.emit('month')"
            [class.active]="view === 'month'"> Miesiąc
       </mat-button-toggle>
-      <mat-button-toggle color="primary"
+      <mat-button-toggle color="primary" [value]="week"
            (click)="viewChange.emit('week')"
            [class.active]="view === 'week'"> Tydzień
       </mat-button-toggle>
-      <mat-button-toggle color="primary"
+      <mat-button-toggle color="primary" [value]="day"
            (click)="viewChange.emit('day')"
            [class.active]="view === 'day'"> Dzień
       </mat-button-toggle>

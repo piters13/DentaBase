@@ -1,7 +1,7 @@
 import { Subject } from 'rxjs';
 import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { CalendarEvent, DAYS_OF_WEEK } from 'angular-calendar';
-import { setHours, setMinutes, startOfDay, subDays, addDays, endOfMonth, addHours, isSameDay, isSameMonth } from 'date-fns';
+import { setHours, setMinutes, startOfDay, subDays, addDays, endOfMonth, addHours, isSameDay, isSameMonth, endOfDay } from 'date-fns';
 
 const colors: any = {
   red: {
@@ -15,6 +15,10 @@ const colors: any = {
   yellow: {
     primary: '#e3bc08',
     secondary: '#FDF1BA'
+  },
+  green: {
+    primary: '#99ff99',
+    secondary: '#b3ffb3'
   }
 };
 
@@ -61,7 +65,7 @@ export class ScheduleLayoutComponent {
       start: addHours(startOfDay(new Date()), 2),
       end: new Date(),
       title: 'Pani Malinowska',
-      color: colors.yellow,
+      color: colors.green,
       // actions: this.actions,
       resizable: {
         beforeStart: true,
@@ -95,6 +99,22 @@ export class ScheduleLayoutComponent {
         this.activeDayIsOpen = true;
       }
     }
+  }
+
+  addEvent(): void {
+    console.log('Adding');
+    this.events.push({
+      title: 'New event',
+      start: startOfDay(new Date()),
+      end: endOfDay(new Date()),
+      color: colors.red,
+      draggable: true,
+      resizable: {
+        beforeStart: true,
+        afterEnd: true
+      }
+    });
+    this.refresh.next();
   }
 
 }
