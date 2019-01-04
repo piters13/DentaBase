@@ -1,7 +1,9 @@
+import { identity } from 'ramda';
 import { Subject } from 'rxjs';
 import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
-import { CalendarEvent, DAYS_OF_WEEK } from 'angular-calendar';
+import { CalendarEvent, DAYS_OF_WEEK, CalendarEventTimesChangedEvent } from 'angular-calendar';
 import { setHours, setMinutes, startOfDay, subDays, addDays, endOfMonth, addHours, isSameDay, isSameMonth, endOfDay } from 'date-fns';
+import { trackById } from '@app/core/utils';
 
 const colors: any = {
   red: {
@@ -40,7 +42,6 @@ export class ScheduleLayoutComponent {
       end: addDays(new Date(), 1),
       title: 'Wizytacja',
       color: colors.red,
-      // actions: this.actions,
       allDay: true,
       resizable: {
         beforeStart: true,
@@ -51,8 +52,7 @@ export class ScheduleLayoutComponent {
     {
       start: startOfDay(new Date()),
       title: 'Pan Podsiadło',
-      color: colors.yellow,
-      // actions: this.actions
+      color: colors.yellow
     },
     {
       start: subDays(endOfMonth(new Date()), 3),
@@ -66,7 +66,6 @@ export class ScheduleLayoutComponent {
       end: new Date(),
       title: 'Pani Malinowska',
       color: colors.green,
-      // actions: this.actions,
       resizable: {
         beforeStart: true,
         afterEnd: true
@@ -87,6 +86,8 @@ export class ScheduleLayoutComponent {
 
   activeDayIsOpen = true;
 
+  trackById = trackById;
+
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
       this.viewDate = date;
@@ -101,8 +102,17 @@ export class ScheduleLayoutComponent {
     }
   }
 
+  eventTimesChanged({
+    event,
+    newStart,
+    newEnd
+  }: CalendarEventTimesChangedEvent): void {
+    event.start = newStart;
+    event.end = newEnd;
+    this.refresh.next();
+  }
+
   addEvent(): void {
-    console.log('Adding');
     this.events.push({
       title: 'New event',
       start: startOfDay(new Date()),
