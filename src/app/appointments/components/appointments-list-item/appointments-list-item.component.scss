@@ -5,5 +5,15 @@
 }
 
 mat-list-item.mat-list-item.mat-list-item-lg {
-  height: 80px;
+  height: 5rem;
+
+  &:hover {
+    background-color: #E8E8EE;
+    border-radius: 15px;
+  }
+}
+
+mat-list-item .mat-list-avatar {
+  width: 4rem;
+  height: 4rem;
 }

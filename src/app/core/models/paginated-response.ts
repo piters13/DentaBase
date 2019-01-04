@@ -1,4 +1,5 @@
+import { Appointment } from './appointment';
 export interface PaginatedResponse<T> {
-  items: ReadonlyArray<T>;
+  items: Array<T>;
   hasNext: boolean;
 }

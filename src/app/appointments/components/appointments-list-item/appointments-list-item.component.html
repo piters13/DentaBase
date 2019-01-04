@@ -1,9 +1,12 @@
 <mat-list-item class="mat-list-item-lg">
-    <div mat-line class="d-flex">
-      <div class="mr-4 d-flex justify-content-between flex-column">
-        <h3 class="list-item-header mb-0">{{appointment.timestamp | date: 'short'}}</h3>
-        <span>{{appointment.patient.firstname}} {{appointment.patient.lastname}}</span>
-        <small>{{appointment.patient.description}}</small>
-      </div>
+  <div mat-line class="d-flex">
+    <div mat-list-avatar class="mat-list-avatar my-auto mr-3">
+      <img src="../../../../assets/appointment_icon.png">
     </div>
-  </mat-list-item>
+    <div class="mr-4 d-flex justify-content-between flex-column">
+      <h3 class="list-item-header mb-0">{{appointment.timestamp}}</h3>
+      <span>{{appointment.patient.firstname}} {{appointment.patient.lastname}}</span>
+      <small class="text-muted">{{appointment.description}}</small>
+    </div>
+  </div>
+</mat-list-item>

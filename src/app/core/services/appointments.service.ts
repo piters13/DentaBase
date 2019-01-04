@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, catchError, tap } from 'rxjs/operators';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, of, throwError } from 'rxjs';
 import { Appointment } from './../models/appointment';
 import { Injectable } from '@angular/core';
 import { PaginatedResponse } from '../models/paginated-response';
@@ -13,24 +14,53 @@ export class AppointmentsService {
 
   getUpcomingAppointments$(
     page: number,
-    pageSize: number = 10,
+    pageSize: number = 5,
   ): Observable<never | PaginatedResponse<Appointment>> {
-    return this.getAppointments$('FUTURE', new Date().toISOString(), page, pageSize);
+    return this.http
+      .get<Appointment[]>('http://localhost:3003/upcoming-appointments', {
+          params: { _page: page.toString(), _limit: pageSize.toString() },
+          observe: 'response',
+        })
+        .pipe(
+          map(res => ({
+            items: res.body,
+            hasNext: !!res.headers.get('Link'),
+          })),
+          catchError(
+            (err: HttpErrorResponse) =>
+              err.status === 404
+                ? of({
+                    items: [],
+                    hasNext: false,
+                  })
+                : throwError(err),
+          ),
+        );
   }
 
   getAppointmentsHistory$(
     page: number,
-    pageSize: number = 10,
+    pageSize: number = 5,
   ): Observable<never | PaginatedResponse<Appointment>> {
-    return this.getAppointments$('PAST', new Date().toISOString(), page, pageSize);
-  }
-
-  getAppointments$(
-    timeFilter: string,
-    timestamp: string,
-    page: number,
-    pageSize: number = 10,
-  ): Observable<never | PaginatedResponse<Appointment>> {
-    return;
+    return this.http
+      .get<Appointment[]>('http://localhost:3003/appointments-history', {
+          params: { _page: page.toString(), _limit: pageSize.toString() },
+          observe: 'response',
+        })
+        .pipe(
+          map(res => ({
+            items: res.body,
+            hasNext: !!res.headers.get('Link'),
+          })),
+          catchError(
+            (err: HttpErrorResponse) =>
+              err.status === 404
+                ? of({
+                    items: [],
+                    hasNext: false,
+                  })
+                : throwError(err),
+          ),
+        );
   }
 }

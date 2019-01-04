@@ -17,7 +17,8 @@ export class UpcomingAppointmentsLayoutComponent {
     pageSize?: number,
   ) => Observable<never | PaginatedResponse<Appointment>>;
 
-  constructor(appointmentService: AppointmentsService) {
+  constructor(private appointmentService: AppointmentsService) {
     this.appointmentsGetFn = appointmentService.getUpcomingAppointments$.bind(appointmentService);
   }
+
 }
