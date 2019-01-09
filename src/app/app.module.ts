@@ -3,12 +3,10 @@ import { PasswordResetConfirmLayoutComponent } from './public/layouts/password-r
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule, LOCALE_ID } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { LoginLayoutComponent } from './public/layouts/login-layout/login-layout.component';
 import { PasswordResetLayoutComponent } from './public/layouts/password-reset-layout/password-reset-layout.component';
-import { RegisterLayoutComponent } from './public/layouts/register-layout/register-layout.component';
 import { AppDashboardComponent } from './public/components/app-dashboard/app-dashboard.component';
 import { AppRouter } from './app.router';
 import { CoreModule } from './core/core.module';
@@ -48,7 +46,6 @@ registerLocaleData(localePl, 'pl', localePlExtra);
     SidenavContentComponent,
     AppBarComponent,
     LoginLayoutComponent,
-    RegisterLayoutComponent,
     PasswordResetLayoutComponent,
     PasswordResetConfirmLayoutComponent
   ],

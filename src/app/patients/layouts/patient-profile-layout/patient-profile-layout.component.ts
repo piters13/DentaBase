@@ -1,7 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { PatientsService } from '@app/core/services/patients.service';
 import { Observable } from 'rxjs';
-import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Patient } from '@app/core/models/patient';
 import { switchMap, shareReplay, tap } from 'rxjs/operators';

@@ -1,6 +1,6 @@
 import { Patient } from '@app/core/models/patient';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit, ChangeDetectionStrategy, Input, OnChanges } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'db-patient-form',

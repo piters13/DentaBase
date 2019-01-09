@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { PatientsService } from './../../../core/services/patients.service';
 import { Patient } from './../../../core/models/patient';
-import { Component, OnInit, ChangeDetectionStrategy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'db-patients-layout',

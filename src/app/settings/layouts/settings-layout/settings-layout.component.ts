@@ -2,7 +2,7 @@ import { AuthState } from './../../../core/state/auth.state';
 import { Logout } from './../../../core/state/auth.actions';
 import { Observable } from 'rxjs';
 import { Select, Store } from '@ngxs/store';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'db-settings-layout',

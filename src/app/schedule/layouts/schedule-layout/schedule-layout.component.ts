@@ -1,8 +1,7 @@
-import { identity } from 'ramda';
 import { Subject } from 'rxjs';
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CalendarEvent, DAYS_OF_WEEK, CalendarEventTimesChangedEvent } from 'angular-calendar';
-import { setHours, setMinutes, startOfDay, subDays, addDays, endOfMonth, addHours, isSameDay, isSameMonth, endOfDay } from 'date-fns';
+import { startOfDay, subDays, addDays, endOfMonth, addHours, isSameDay, isSameMonth, endOfDay } from 'date-fns';
 import { trackById } from '@app/core/utils';
 
 const colors: any = {

@@ -1,9 +1,9 @@
 import { PatientsService } from './../../../core/services/patients.service';
 import { Patient } from './../../../core/models/patient';
 import { Observable } from 'rxjs';
-import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
-import { startWith, map, debounceTime, switchMap, tap, filter } from 'rxjs/operators';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { map, debounceTime, switchMap } from 'rxjs/operators';
 @Component({
   selector: 'db-search-bar',
   templateUrl: './search-bar.component.html',

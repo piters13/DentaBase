@@ -12,7 +12,6 @@ import {
   LoginError,
   LoginSuccess,
   Logout,
-  SetRefreshedCredentials,
 } from './auth.actions';
 import { Navigate } from '@ngxs/router-plugin';
 import { dispatch } from '@app/core/lib/rx';
@@ -38,11 +37,6 @@ export class AuthState {
   @Selector()
   static accessToken(state: AuthStateModel): Option<string> {
     return state.credentials.map(credentials => credentials.access_token);
-  }
-
-  @Selector()
-  static refreshToken(state: AuthStateModel): Option<string> {
-    return state.credentials.map(credentials => credentials.refresh_token);
   }
 
   @Selector()
@@ -87,13 +81,6 @@ export class AuthState {
     });
 
     return ctx.dispatch(new GetUserContext());
-  }
-
-  @Action(SetRefreshedCredentials)
-  setRefreshedCredentials(ctx: StateContext<AuthStateModel>, action: SetRefreshedCredentials) {
-    ctx.patchState({
-      credentials: some(action.oAuthCredentials),
-    });
   }
 
   @Action(GetUserContext)

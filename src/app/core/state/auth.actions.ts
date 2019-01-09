@@ -35,11 +35,6 @@ export class GetUserContextError {
 
   constructor(readonly error: any) {}
 }
-export class SetRefreshedCredentials {
-  static readonly type = '[Refresh Token Process] Set refreshed credentials';
-
-  constructor(readonly oAuthCredentials: OAuthCredentials) {}
-}
 
 export class Logout {
   static readonly type = '[Auth] Logout';

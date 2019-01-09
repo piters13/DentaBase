@@ -1,6 +1,4 @@
 import { FormsModule } from '@angular/forms';
-import { NgxsModule } from '@ngxs/store';
-import { PatientsState } from './state/patients.state';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PatientsLayoutComponent } from './layouts/patients-layout/patients-layout.component';
@@ -17,7 +15,6 @@ import { PatientCardComponent } from './components/patient-card/patient-card.com
     CommonModule,
     SharedModule,
     FormsModule,
-    NgxsModule.forFeature([PatientsState]),
     PatientsRouter
   ],
   exports: [PatientsLayoutComponent, PatientProfileLayoutComponent],

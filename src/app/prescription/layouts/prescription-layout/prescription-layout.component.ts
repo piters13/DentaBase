@@ -1,4 +1,3 @@
-import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
@@ -9,11 +8,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class PrescriptionLayoutComponent implements OnInit {
 
-  constructor() {
+  constructor() { }
 
-  }
-
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

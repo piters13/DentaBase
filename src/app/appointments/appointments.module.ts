@@ -2,7 +2,6 @@ import { AppointmentsRouter } from './appointments.router';
 import { SharedModule } from '@app/shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgxsModule } from '@ngxs/store';
 import { UpcomingAppointmentsLayoutComponent } from './layouts/upcoming-appointments-layout/upcoming-appointments-layout.component';
 import { AppointmentsHistoryLayoutComponent } from './layouts/appointments-history-layout/appointments-history-layout.component';
 import { AppointmentsListComponent } from './components/appointments-list/appointments-list.component';
@@ -12,7 +11,6 @@ import { AppointmentsListItemComponent } from './components/appointments-list-it
   imports: [
     CommonModule,
     SharedModule,
-    // NgxsModule.forFeature([AppointmentsState]),
     AppointmentsRouter,
   ],
   exports: [UpcomingAppointmentsLayoutComponent, AppointmentsHistoryLayoutComponent],

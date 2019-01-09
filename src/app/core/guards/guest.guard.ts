@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router, CanLoad } from '@angular/router';
+import { CanActivate, CanLoad } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Select, Store } from '@ngxs/store';
 import { AuthState } from '@app/core/state/auth.state';

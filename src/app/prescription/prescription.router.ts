@@ -7,7 +7,6 @@ const routes: Routes = [
   {
     path: 'prescription',
     component: PrescriptionLayoutComponent,
-    // resolve: { state: PatientsStateResolver },
   },
 ];
 

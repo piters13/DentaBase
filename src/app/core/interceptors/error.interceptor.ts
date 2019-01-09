@@ -15,12 +15,6 @@ import { Store } from '@ngxs/store';
 import { Logout } from '@app/core/state/auth.actions';
 import { AuthState } from '@app/core/state/auth.state';
 
-// const errorBlacklist: { urlRegex: RegExp; statusList: number[] }[] = [
-//   { urlRegex: /restaurants\/[0-9]*\/menu$/, statusList: [404] },
-//   { urlRegex: /restaurants\/[0-9]*\/user-discounts-reservations$/, statusList: [404] },
-//   { urlRegex: /restaurants\/[0-9]*\/surveys\/[0-9]*\/result$/, statusList: [404] },
-// ];
-
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
   constructor(private snackBar: MatSnackBar, private store: Store) {}
@@ -43,13 +37,6 @@ export class ErrorInterceptor implements HttpInterceptor {
           });
           return throwError(res);
         }
-
-        // const isManuallyHandled = errorBlacklist.find(
-        //   x => x.urlRegex.test(req.url) && x.statusList.includes(res.status),
-        // );
-        // if (isManuallyHandled) {
-        //   return throwError(res);
-        // }
 
         const errorObject = res.error.errors ? res.error.errors[0] : res.error;
         const errorMessage = errorObject.message

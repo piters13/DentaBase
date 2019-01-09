@@ -1,7 +1,7 @@
 import { AuthState } from './../../../core/state/auth.state';
 import { Observable } from 'rxjs';
 import { Select } from '@ngxs/store';
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { NavigationItem } from '../navigation-item/navigation-item.component';
 import { SidenavService } from '@app/core/services/sidenav.service';
 

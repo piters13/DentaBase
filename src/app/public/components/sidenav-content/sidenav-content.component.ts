@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { Select } from '@ngxs/store';
 import { AuthState } from './../../../core/state/auth.state';
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { NavigationItem } from '../navigation-item/navigation-item.component';
 
 @Component({

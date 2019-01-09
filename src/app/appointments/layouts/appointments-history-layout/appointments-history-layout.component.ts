@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { PaginatedResponse } from '@app/core/models/paginated-response';
 import { Appointment } from '@app/core/models/appointment';
 import { AppointmentsService } from '@app/core/services/appointments.service';

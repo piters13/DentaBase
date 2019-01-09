@@ -1,4 +1,3 @@
-import { pipe } from 'ramda';
 import { Option, none, some } from 'fp-ts/lib/Option';
 import { Appointment } from '@app/core/models/appointment';
 import { Component, OnInit, ChangeDetectionStrategy, Input, ChangeDetectorRef } from '@angular/core';
