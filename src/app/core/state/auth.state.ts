@@ -1,3 +1,4 @@
+import { AuthStateModel } from './auth.state';
 import { AuthService } from '../services/auth.service';
 import { getUserFullName, UserContext } from '../models/user/user-context';
 import { OAuthCredentials } from '../models/user/o-auth-credentials';
@@ -117,12 +118,6 @@ export class AuthState {
 
   @Action(Logout)
   logout(ctx: StateContext<AuthStateModel>) {
-    const optCredentials = ctx.getState().credentials;
-
-    optCredentials.fold(null, credentials =>
-      this.authService.revokeToken$(credentials.access_token).subscribe(),
-    );
-
     ctx.setState({
       userContext: none,
       credentials: none,

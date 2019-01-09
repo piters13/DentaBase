@@ -1,3 +1,6 @@
+import { first, map, switchMap } from 'rxjs/operators';
+import { Option } from 'fp-ts/lib/Option';
+import { Select } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -16,19 +19,17 @@ import { RegisterForm } from '@app/core/models/user/register-form';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login$(credentials: LoginForm): Observable<OAuthCredentials> {
+  login$(credentials: LoginForm): Observable<any> {
     const body = new HttpParams({
       fromObject: {
-        grant_type: 'password',
-        scope: 'trust',
-        username: credentials.email,
-        password: hash(credentials.password),
+        email: credentials.email,
+        password: credentials.password,
       },
     });
 
-    const headers = buildOAuthHeader();
+    // const headers = buildOAuthHeader();
 
-    return this.http.post<OAuthCredentials>(`${environment.oAuthUrl}/token`, body, { headers });
+    return this.http.post<any>(`${environment.oAuthUrl}`, body);
   }
 
   register$(form: RegisterForm, registrationToken: string): Observable<User> {
@@ -40,11 +41,11 @@ export class AuthService {
   }
 
   getLoggedUserContext$(): Observable<UserContext> {
-    return this.http.get<UserContext>(createApiPath('users', 'context'));
+    return this.http.get<UserContext>('http://localhost:3000/users/context');
   }
 
   getLoggedUserData$(): Observable<User> {
-    return this.http.get<User>(createApiPath('users', 'me'));
+    return this.http.get<User>('http://localhost:3000/users/context');
   }
 
   requestNewToken$(refreshToken: string): Observable<OAuthCredentials> {
@@ -62,6 +63,6 @@ export class AuthService {
   }
 
   revokeToken$(token: string): Observable<void> {
-    return this.http.post<void>(`${environment.apiUrl}/token/revoke`, { token });
+    return this.http.post<void>(`http://localhost:3000/token/revoke`, { token });
   }
 }

@@ -2,7 +2,7 @@
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-const serverUrl = 'https://gurm-app-dev-server.azurewebsites.net';
+const serverUrl = 'http://localhost:3000';
 
 export const environment = {
   appName: 'DentaBase',
@@ -15,7 +15,7 @@ export const environment = {
     id: 'dentaBase_front',
     secret: 'front#2018',
   },
-  oAuthUrl: serverUrl + '/oauth',
+  oAuthUrl: serverUrl + '/auth/login',
 };
 
 /*

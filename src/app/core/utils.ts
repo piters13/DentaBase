@@ -23,7 +23,7 @@ export function createApiPath(...s: (string | number)[]): string {
 export function buildOAuthHeader(): HttpHeaders {
   return new HttpHeaders({
     Authorization:
-      'Basic ' + btoa(`${environment.oAuthConfig.id}:${environment.oAuthConfig.secret}`),
+    'Basic ' + btoa(`${environment.oAuthConfig.id}:${environment.oAuthConfig.secret}`),
     'Content-Type': 'application/x-www-form-urlencoded',
   });
 }

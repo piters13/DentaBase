@@ -36,8 +36,8 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: './main/main.module#MainModule',
-    // canLoad: [AuthGuard],
-    // canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard],
   },
 ];
 

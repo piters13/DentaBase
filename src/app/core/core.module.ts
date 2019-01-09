@@ -2,9 +2,9 @@ import { AuthState } from './state/auth.state';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-// import { ErrorInterceptor } from '@app/core/interceptors/error.interceptor';
+import { ErrorInterceptor } from '@app/core/interceptors/error.interceptor';
 // import { LanguageInterceptor } from '@app/core/interceptors/language.interceptor';
-// import { AuthTokenInterceptor } from '@app/core/interceptors/auth-token.interceptor';
+import { AuthTokenInterceptor } from '@app/core/interceptors/auth-token.interceptor';
 import { NgxsModule } from '@ngxs/store';
 // import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 // import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
@@ -37,8 +37,8 @@ const snackBarOptions = {
   declarations: [],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: LanguageInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: AuthTokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthTokenInterceptor, multi: true },
     // { provide: HTTP_INTERCEPTORS, useClass: RefreshTokenInterceptor, multi: true },
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
