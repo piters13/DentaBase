@@ -4,6 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { Appointment } from './../models/appointment';
 import { Injectable } from '@angular/core';
 import { PaginatedResponse } from '../models/paginated-response';
+import { serverUrl } from '@env/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class AppointmentsService {
     pageSize: number = 5,
   ): Observable<never | PaginatedResponse<Appointment>> {
     return this.http
-      .get<Appointment[]>('http://localhost:3003/upcoming-appointments', {
+      .get<Appointment[]>(`${serverUrl}/upcoming-appointments`, {
           params: { _page: page.toString(), _limit: pageSize.toString() },
           observe: 'response',
         })
@@ -43,7 +44,7 @@ export class AppointmentsService {
     pageSize: number = 5,
   ): Observable<never | PaginatedResponse<Appointment>> {
     return this.http
-      .get<Appointment[]>('http://localhost:3003/appointments-history', {
+      .get<Appointment[]>(`${serverUrl}/appointments-history`, {
           params: { _page: page.toString(), _limit: pageSize.toString() },
           observe: 'response',
         })

@@ -46,8 +46,7 @@ export class AppDashboardComponent implements AfterViewInit {
       },
     ];
 
-    // this.navigation$ = this.isLogged$.pipe(map(isLogged => (isLogged ? adminNavigation : [])));
-    this.navigation$ = of(adminNavigation);
+    this.navigation$ = this.isLogged$.pipe(map(isLogged => (isLogged ? adminNavigation : [])));
   }
 
   ngAfterViewInit() {

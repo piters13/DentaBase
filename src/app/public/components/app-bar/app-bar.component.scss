@@ -18,3 +18,17 @@
     margin: 0 5px 0 0;
   }
 }
+
+.branding {
+  flex: 1 1 auto;
+  text-align: center;
+
+  img {
+    position: relative;
+    max-height: 64px;
+
+    @media (max-width: 599px) {
+      height: 40px;
+    }
+  }
+}
